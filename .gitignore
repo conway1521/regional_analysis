@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.env/
+
+# Jupyter
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IDE
+.idea/
+.vscode/
+
+# Data
+*.csv
+*.pkl
+!data/example_data.csv  # If you want to include a sample data file
+
+# OS
+.DS_Store
