@@ -1,23 +1,28 @@
-# Python
+# Virtual environment
+venv/
+env/
+.env/
+
+# Python cache files
 __pycache__/
 *.py[cod]
 *$py.class
-.Python
-venv/
-.env/
 
-# Jupyter
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
 
-# IDE
-.idea/
+# IDEs
 .vscode/
+.idea/
+*.swp
 
-# Data
-*.csv
-*.pkl
-!data/example_data.csv  # If you want to include a sample data file
+# SSH files
+eval "$(ssh-agent -s)"*
 
-# OS
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Operating System
 .DS_Store
