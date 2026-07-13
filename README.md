@@ -1,75 +1,46 @@
-# EU Regional Development Analysis Framework
+# EU Regional Development Analysis
 
-## Overview
-This repository contains a comprehensive analytical framework for studying regional development across EU NUTS2 regions. The framework integrates three key pillars:
-- Place-based Conditions
-- Human and Social Capital
-- Economic Activity
+Analysis of inclusive economic development across EU NUTS2 regions, applying the same three-pillar framework (Place-based Conditions, Human and Social Capital, Economic Activity) developed for the NED Dashboard to the European regional context.
 
-The analysis combines traditional economic metrics with social and institutional factors to provide a more nuanced understanding of regional development patterns.
+The goal is to go beyond standard convergence metrics and capture the structural conditions that differentiate durable regional growth from extractive or fragile growth. Output includes composite pillar indices, inter-pillar network analysis, and choropleth maps at the NUTS2 level.
 
-## Project Structure
+## Methods
+
+The pipeline ingests NUTS2 socioeconomic data from Eurostat, merges it with NUTS2 GeoJSON boundaries, constructs composite indices for each pillar using weighted aggregation, and runs network analysis to measure inter-pillar interdependencies across regions.
+
+## Structure
+
 ```
-eu-regional-development/
-├── data/               # Regional datasets and GeoJSON files
-├── notebooks/         # Jupyter notebooks for exploration
-├── output/         # Jupyter notebooks for exploration
-├── src/              # Core analysis modules
-│   ├── analysis.py   # Main analysis pipeline
-│   ├── pillars_structure.py # Framework structure
-│   └── visualization.py # Visualization tools
-├── scripts/          # Executable scripts
-│   └── run_analysis.py
-└── requirements.txt  # Project dependencies
+regional_analysis/
+├── data/                  # NUTS2 datasets and GeoJSON (not committed)
+├── notebooks/             # Exploratory analysis
+├── output/                # Generated indices and figures
+└── src/
+    ├── analysis.py        # Main pipeline
+    ├── pillars_structure.py
+    └── visualization.py
 ```
 
-## Installation
-1. Clone the repository:
+## Setup
+
 ```bash
-git clone https://github.com/[your-username]/eu-regional-development.git
-cd eu-regional-development
-```
-
-2. Create a virtual environment (recommended):
-```bash
+git clone https://github.com/conway1521/regional_analysis.git
+cd regional_analysis
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
-To run the complete analysis pipeline:
+## Run
+
 ```bash
 python scripts/run_analysis.py
 ```
 
-The analysis will:
-1. Process regional data across all three pillars
-2. Generate composite indices
-3. Perform network and spatial analysis
-4. Create visualizations
-5. Save results for further exploration
-
-Results can be explored using the Jupyter notebooks in the `notebooks/` directory.
+This generates composite indices for each pillar, network analysis of inter-relationships, and spatial visualizations saved to `output/`. Results are also saved as pickle files for further exploration in the notebooks.
 
 ## Data Requirements
-The analysis requires:
-- NUTS2 level socioeconomic data
-- NUTS2 GeoJSON files for spatial analysis
-- Data should be stored in the `data/` directory
 
-## Output
-The analysis generates:
-- Composite indices for each pillar
-- Network analysis of inter-relationships
-- Spatial analysis results
-- Visualization of regional patterns
-
-Results are saved as pickle files for further analysis in Jupyter notebooks.
-
-
-The approach aims to provide a more comprehensive understanding of regional development dynamics by considering both traditional economic metrics and broader social/institutional factors.
+- NUTS2 socioeconomic indicators from Eurostat (download separately)
+- NUTS2 boundary GeoJSON from the [Eurostat GISCO service](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts)
+- Place both in `data/`
